@@ -8,19 +8,27 @@ const sideMenuRouter = require("./router/sideMenuRouter");
 dotenv.config();
 
 const app = express();
-app.options("*", cors());
-app.use(cors());
+
+const corsOptions = {
+  credentials: true,
+  origin: ['http://localhost:3000'], // Adjust these URLs to match your frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
 app.use(userRouter);
 app.use("/sideMenu", sideMenuRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).send("<h1> Wellcome to backend</h1>");
+  res.status(200).send("<h1>Welcome to backend</h1>");
 });
 
 databaseConnection();
 
-app.listen(process.env.PORT || 6666, () => {
-  console.log(`server is running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
- 
