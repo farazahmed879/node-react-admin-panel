@@ -1,9 +1,6 @@
-// const mailingController = require("../middleware/mailSending.js");
-// const BookingModel = require("../model/bookingmodel.js");
-// const vendorModel = require("../model/vendormodel.js");
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const VendorPassRecoveryModel = require("../model/vendorPassRecoverymodel.js");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Users = require("../model/userModel.js");

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import CustomInput from "@/components/customInput/page";
@@ -11,6 +11,10 @@ import axios from "axios";
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
+
+  useEffect(() => {
+    localStorage.clear()
+  },[])
 
   const initialValues: any = {
     username: "",

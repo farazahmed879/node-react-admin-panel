@@ -16,7 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 // import Logo from "../../../public/images/logo.png";
 import {
   Avatar,
@@ -32,9 +32,11 @@ import { useRouter } from "next/navigation";
 
 const drawerWidth = 250;
 
-const Main = styled("main", { shouldForwardProp: (prop:any) => prop !== "open" })<{
+const Main = styled("main", {
+  shouldForwardProp: (prop: any) => prop !== "open",
+})<{
   open?: boolean;
-}>(({ theme, open }:any) => ({
+}>(({ theme, open }: any) => ({
   flexGrow: 1,
   // padding: theme.spacing(1),
   transition: theme.transitions.create("margin", {
@@ -55,7 +57,7 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const scrollbarStyles = (theme:any) => ({
+const scrollbarStyles = (theme: any) => ({
   height: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
   overflowY: "auto",
   scrollbarWidth: "thin", // For Firefox
@@ -73,7 +75,7 @@ const scrollbarStyles = (theme:any) => ({
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }:any) => ({
+const DrawerHeader = styled("div")(({ theme }: any) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
@@ -95,7 +97,6 @@ export default function SideBar(props: any) {
   const currentRoute = router?.pathname;
   const isMobileOrTablet = useMediaQuery(theme?.breakpoints.down("lg"));
   const [activeDropDown, setActiveDropDown] = React.useState<number[]>([]);
-
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -127,33 +128,39 @@ export default function SideBar(props: any) {
     } else {
       // Open the sidebar if the screen size is larger
       handleDrawerOpen();
-      setMobileOpen(false)
+      setMobileOpen(false);
     }
   }, [isMobileOrTablet]);
 
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Box sx={{ display: "flex", justifyContent:'space-between', alignItems: "center" }}>
-      <Box sx={{display:'flex', alignItems:'center'}} >
-        {/* <img width={50} height={50} src={"../../../images/logo(FYP).png"} /> */}
-        <Typography
-          sx={{ color: "#fff", fontSize: "16px", fontWeight: "bold" }}
-        >
-          Frontend Project
-        </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          {/* <img width={50} height={50} src={"../../../images/logo(FYP).png"} /> */}
+          <Typography
+            sx={{ color: "#fff", fontSize: "16px", fontWeight: "bold" }}
+          >
+            Frontend Project
+          </Typography>
         </Box>
         <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="start"
-        sx={{ mr: 2, display: { sm: "none" } }}
-      >
-        <CloseIcon sx={{ color: "#fff" }}/>
-      </IconButton>
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
+          <CloseIcon sx={{ color: "#fff" }} />
+        </IconButton>
       </Box>
-      
+
       <List>
-        {Navigation.map((item: any, key:any) => (
+        {Navigation.map((item: any, key: any) => (
           <List>
             <ListItemButton
               sx={{
@@ -234,7 +241,7 @@ export default function SideBar(props: any) {
           </Typography>
         </DrawerHeader>
         <Box sx={scrollbarStyles}>
-          {Navigation.map((item: any, key:any) => (
+          {Navigation.map((item: any, key: any) => (
             <List>
               <ListItemButton
                 sx={{
@@ -282,7 +289,7 @@ export default function SideBar(props: any) {
             <Button
               variant="outlined"
               size="medium"
-              onClick={()=>router.push('/login')}
+              onClick={() => router.push("/login")}
               sx={{
                 color: "#fff",
                 width: "100%",
@@ -294,7 +301,7 @@ export default function SideBar(props: any) {
                 },
               }}
             >
-              Login
+              Logout
             </Button>
           </Box>
         </Box>
